@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مؤسسة حسين الجوفي استيراد وتصدير الخضروات والفواكه الطازجة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #013159;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        /* شريط التنقل العلوي */
+        .navbar {
+            background: linear-gradient(135deg, #013159, #001F3F);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            color: #00AEEF;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* زر ChatGPT المميز */
+        .ai-btn {
+            background: linear-gradient(135deg, #00AEEF, #4FC3F7);
+            color: #013159;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,174,239,0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .ai-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,174,239,0.4);
+            background: linear-gradient(135deg, #4FC3F7, #00AEEF);
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #013159, #001F3F);
+        }
+        
+        header img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            color: #00AEEF;
+            font-size: 32px;
+            margin: 10px 0 15px;
+        }
+        
+        header p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #E0E0E0;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+        
+        section {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #00AEEF;
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+        
+        /* الخدمات */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+        
+        .service-box {
+            background: #012645;
+            padding: 22px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #00AEEF33;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,174,239,0.2);
+        }
+        
+        /* عداد التحميلات */
+        .counter-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .counter {
+            font-size: 42px;
+            font-weight: 700;
+            color: #00AEEF;
+            margin-bottom: 5px;
+        }
+        
+        .counter-label {
+            color: #E0E0E0;
+            font-size: 18px;
+        }
+        
+        /* معرض الصور المحسّن */
+        .gallery-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .gallery-main {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #001F3F;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-main img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            max-height: 500px;
+            object-fit: contain;
+        }
+        
+        .gallery-thumbs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .thumb {
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: 0.3s;
+            height: 80px;
+            background: #001F3F;
+        }
+        
+        .thumb:hover, .thumb.active {
+            border-color: #00AEEF;
+        }
+        
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* معلومات التطبيق */
+        .app-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        
+        .info-box {
+            background: #012645;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid #00AEEF33;
+            font-size: 16px;
+        }
+        
+        .info-box span {
+            color: #00AEEF;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        /* تحميل */
+        .download-area {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .play-btn {
+            background: #25D366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .qr img {
+            background: #fff;
+            padding: 10px;
+            border-radius: 14px;
+            width: 140px;
+        }
+        
+        /* الفوتر مع زر الواتساب */
+        footer {
+            background: #001F3F;
+            text-align: center;
+            padding: 25px 20px;
+            color: #BDBDBD;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        
+        /* أنيميشن */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.6s;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 15px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .ai-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            header {
+                padding: 40px 15px 30px;
+            }
+            
+            header h1 {
+                font-size: 28px;
+            }
+            
+            header p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 30px 15px;
+            }
+            
+            h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .counter {
+                font-size: 36px;
+            }
+            
+            .gallery-thumbs {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 10px;
+            }
+            
+            .thumb {
+                height: 70px;
+            }
+            
+            .play-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+            
+            .qr img {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل العلوي مع زر ChatGPT -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="شعار الجوفي" class="logo-img">
+                <span class="logo-text">مؤسسة حسين الجوفي</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="chat.html" class="ai-btn">
+                    🤖 ChatGPT مجاني
+                    <span style="font-size: 12px; opacity: 0.9;">جرب الآن!</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <img src="logo.png" alt="شعار مؤسسة حسين الجوفي">
+        <h1>مؤسسة حسين الجوفي</h1>
+        <p>تعتبر هذه المؤسسة جزءاً من مجموعة الموردين والمصدرين التي تساهم في تعزيز الأمن الغذائي وتنشيط الحركة التجارية للمحاصيل الزراعية في العالم</p>
+    </header>
+    
+    
+        </section>
+    
+    <h2>ماذا تجدون لدينا ؟</h2>
+        <div class="app-info">
+            <div class="info-box"><span>التخصص الرئيسي:</span>استيراد وتصدير الخضروات والفواكه الطازجة.</div>
+            <div class="info-box"><span>نطاق العمل:</span>تعمل كوسيط تجاري يربط بين المنتجين المحليين والأسواق الخارجية (تصدير)، وبين الموردين الدوليين والسوق المحلي (استيراد).</div>
+            <div class="info-box"><span>الهدف:</span> توفير منتجات زراعية ذات جودة عالية مع الالتزام بالمعايير الصحية واللوجستية لضمان سلامة وصول البضائع.</div>
+
+            <div class="info-box"><span>مؤسسة حسين الجوفي</span>كل ما تحتاجونه، وأكثر! ✨</div>
+        </div>
+    </section>
+    
+    <section class="reveal">
+        <h2>لقطات من مؤسسة حسين الجوفي</h2>
+        <div class="gallery-container">
+            <div class="gallery-main">
+                <img id="mainImage" src="img1.png" alt="صور من مؤسسة حسين الجوفي">
+            </div>
+            <div class="gallery-thumbs">
+                <div class="thumb active" data-img="img1.png">
+                    <img src="img1.png" alt="لقطة 1">
+                </div>
+                <div class="thumb" data-img="img2.png">
+                    <img src="img2.png" alt="لقطة 2">
+                </div>
+                <div class="thumb" data-img="img3.png">
+                    <img src="img3.png" alt="لقطة 3">
+                </div>
+                <div class="thumb" data-img="img4.png">
+                    <img src="img4.png" alt="لقطة 4">
+                </div>
+                <div class="thumb" data-img="img5.png">
+                    <img src="img5.png" alt="لقطة 5">
+                </div>
+                <div class="thumb" data-img="img6.png">
+                    <img src="img6.png" alt="لقطة 6">
+                </div>
+                <div class="thumb" data-img="img7.png">
+                    <img src="img7.png" alt="لقطة 7">
+                </div>
+            </div>
+        </div>
+
+    
+    <section class="reveal">
+    <h2>انظم الينا في قناة واتساب لمزيد من صور المنتجات الزراعية والعروض</h2>
+    <div class="download-area">
+        <a class="play-btn" target="_blank" href="https://whatsapp.com/channel/0029Vb6s8v21CYoW78dVM83Q">
+            قناتنا على واتساب
+        </a>
+    </div>
+</section>
+    
+    <!-- قسم إضافي للذكاء الاصطناعي -->
+    <section class="reveal">
+        <h2>🤖 مساعد الذكاء الاصطناعي</h2>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p>استخدم مساعد الذكاء الاصطناعي المجاني للإجابة على أسئلتك واستفساراتك</p>
+            <a href="chat.html" class="ai-btn" style="display: inline-flex; margin-top: 15px; padding: 12px 30px;">
+                🤖 ChatGPT مجاني - جرب الآن!
+            </a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <a class="whatsapp-btn" href="https://wa.me/967774546129" target="_blank">
+                <span>💬</span> تواصل مع الإدارة عبر واتساب
+            </a>
+            <div class="copyright">
+                © 2026 مؤسسة حسين الجوفي – جميع الحقوق محفوظة
+            </div>
+            <div class="copyright">
+                تم تطوير هذه المدونة بواسطة عصام مرحب 772787874
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // أنيميشن للمحتوى عند التمرير
+        const reveals = document.querySelectorAll('.reveal');
+        window.addEventListener('scroll', () => {
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 100) {
+                    r.classList.add('active');
+                }
+            });
+        });
+        
+        // عداد التحميلات
+        let count = 0;
+        let target = 1000;
+        let counter = document.getElementById('downloads');
+        let interval = setInterval(() => {
+            count += 20;
+            counter.innerText = count.toLocaleString();
+            if (count >= target) {
+                counter.innerText = "1,000+";
+                clearInterval(interval);
+            }
+        }, 20);
+        
+        // معرض الصور المتحكم فيه
+        const thumbs = document.querySelectorAll('.thumb');
+        const mainImage = document.getElementById('mainImage');
+        
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // إزالة النشط من جميع الصور المصغرة
+                thumbs.forEach(t => t.classList.remove('active'));
+                
+                // إضافة النشط للصورة المحددة
+                this.classList.add('active');
+                
+                // تغيير الصورة الرئيسية
+                const imgSrc = this.getAttribute('data-img');
+                mainImage.src = imgSrc;
+            });
+        });
+        
+        // تفعيل الأنيميشن عند التحميل
+        window.addEventListener('load', () => {
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 100) {
+                    r.classList.add('active');
+                }
+            });
+            
+            // إضافة زر ChatGPT ديناميكي للجوال
+            if (window.innerWidth <= 768) {
+                const footer = document.querySelector('footer .footer-content');
+                const aiBtn = document.createElement('a');
+                aiBtn.href = 'chat.html';
+                aiBtn.className = 'ai-btn';
+                aiBtn.innerHTML = '🤖 ChatGPT مجاني';
+                aiBtn.style.marginTop = '10px';
+                footer.insertBefore(aiBtn, footer.firstChild);
+            }
+        });
+        
+        // تأثير عند التمرير على شريط التنقل
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'linear-gradient(135deg, #001F3F, #013159)';
+                navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, #013159, #001F3F)';
+                navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
